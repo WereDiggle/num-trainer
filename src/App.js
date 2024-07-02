@@ -43,7 +43,7 @@ function NumPad(props) {
       <NumPadButton {...props} num='8'/>
       <NumPadButton {...props} num='9'/>
       <div></div>
-      <NumPadButton num='0'/>
+      <NumPadButton {...props} num='0'/>
       <div></div>
     </div>
   );
