@@ -16,7 +16,7 @@ function NumPadButton({bigNum, setBigNum, num}) {
     console.log('clicked');
     if (num == bigNum) {
       console.log('clicked bignum');
-      setBigNum(generateBigNum);
+      setBigNum(generateBigNum(bigNum));
     }
   }
   return (
@@ -27,7 +27,7 @@ function NumPadButton({bigNum, setBigNum, num}) {
 function NumPad(props) {
   function handleKeyEvent (event) {
     if (event.key == props.bigNum) {
-      props.setBigNum(generateBigNum);
+      props.setBigNum(generateBigNum(props.bigNum));
     }
   }
 
@@ -49,8 +49,13 @@ function NumPad(props) {
   );
 }
 
-function generateBigNum() {
-  return Math.floor(Math.random() * 10);
+function generateBigNum(curNum) {
+  let randNum;
+  do {
+    randNum = Math.floor(Math.random() * 10);
+  } while (curNum == randNum);
+
+  return randNum;
 }
 
 function App() {
