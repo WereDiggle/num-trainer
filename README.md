@@ -1,6 +1,6 @@
 # 📃TODO
 ---
-- [ ] Increase keypad size on mobile
+- [x] Increase keypad size on mobile
 - [ ] Don't repeat numbers
 - [ ] Add keyboard support
 
