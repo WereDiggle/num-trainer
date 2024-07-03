@@ -1,9 +1,13 @@
 # 📃TODO
 ---
 - [ ] Add keyboard support
+- [ ] Display flash as feedback
 
 # 🕰️TODO-LATER
 ---
+- [ ] Measure and display response time
+- [ ] Add smoother transitions
+- [ ] Add sequence of numbers
 
 # ✅DONE
 ---
