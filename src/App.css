@@ -29,7 +29,7 @@
 }
 
 .num-pad {
-  background-color: #282c34;
+  background-color: #1d1f20;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, calc(100vw / 3));
@@ -37,7 +37,7 @@
 }
 
 .dark-bg {
-  border: 1px solid pink;
+  border: 1px solid gray;
   background-color: #282c34;
   color: white;
 }
