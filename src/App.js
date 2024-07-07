@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 function NumDisplay({num}) {
   return (
@@ -13,9 +13,7 @@ function NumDisplay({num}) {
 
 function NumPadButton({bigNum, setBigNum, num}) {
   function handleClick() {
-    console.log('clicked');
     if (num == bigNum) {
-      console.log('clicked bignum');
       setBigNum(generateBigNum(bigNum));
     }
   }
@@ -25,11 +23,20 @@ function NumPadButton({bigNum, setBigNum, num}) {
 }
 
 function NumPad(props) {
-  function handleKeyEvent (event) {
-    if (event.key == props.bigNum) {
-      props.setBigNum(generateBigNum(props.bigNum));
+  
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      console.log('key pressed ' + event.key);
+      if (event.key == props.bigNum) { // props is only captured once
+        props.setBigNum(generateBigNum(props.bigNum));
+      }
     }
-  }
+    console.log('use effect');
+    console.log(window);
+    window.addEventListener("keydown", handleKeyPress);
+    
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [props.bigNum]);
 
   return (
     <div className='num-pad'>
@@ -60,6 +67,7 @@ function generateBigNum(curNum) {
 
 function App() {
   const [bigNum, setBigNum] = useState(generateBigNum());
+
   return (
     <div className="App">
       <header className="App-header">

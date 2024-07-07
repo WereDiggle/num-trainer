@@ -1,7 +1,7 @@
 # 📃TODO
 ---
-- [ ] Add keyboard support
 - [ ] Display flash as feedback
+- [ ] Increase keypad font size
 
 # 🕰️TODO-LATER
 ---
@@ -11,5 +11,6 @@
 
 # ✅DONE
 ---
+- [x] Add keyboard support
 - [x] Don't repeat numbers
 - [x] Increase keypad size on mobile
