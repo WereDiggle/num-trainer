@@ -48,6 +48,8 @@
   left: 0;
   display: grid;
   justify-content: center;
+  align-items: center;
+  justify-items: center;
   grid-template-columns: repeat(3, calc(100vw / 3));
   grid-template-rows: repeat(4, calc(50vh / 4));
 }
@@ -55,17 +57,20 @@
 .ghost-cell {
   border: 1px solid #404753;
   box-sizing: border-box;
+  transition: all 4s 0s ease-out;
+  width: 0px;
+  height: 0px;
+}
+
+.active {
+  transition: none;
+  background-color: rgba(255, 60, 116, 0.75);
   width: calc(100vw / 3);
   height: calc(50vh / 4);
-  transition: background-color 1s 0s;
 }
 
 .black {
   background-color: black;
-}
-
-.active {
-  background-color: rgba(255,255,255,0.75);
 }
 
 @keyframes App-logo-spin {
