@@ -5,7 +5,29 @@ import {useState, useEffect} from 'react';
 function NumDisplay({num}) {
   return (
     <div>
-      {num}
+      <div>
+        {num}
+      </div>
+      <InputGhost num={num}/>
+    </div>
+  );
+}
+
+// 👻
+function InputGhost({num}) {
+  let ghostCells = Array.from(
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, null, 0, null],
+    (n, _) => {
+      if (num == n) {
+        return (<div className='ghost-cell active'></div>);
+      } else {
+        return (<div className='ghost-cell'></div>);
+      }
+    }
+  );
+  return (
+    <div className='overlay'>
+      {ghostCells}
     </div>
   );
 }
@@ -18,10 +40,19 @@ function NumPadButton({bigNum, setBigNum, num}) {
     }
   }
   return (
-    <button onClick={handleClick}>{num}</button>
+    <button className='dark-bg' onClick={handleClick}>{num}</button>
   );
 }
 
+/* 
+
+{
+  targetValue: what you're trying to input
+}
+
+*/
+
+// 🔢
 function NumPad(props) {
   
   useEffect(() => {

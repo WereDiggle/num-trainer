@@ -29,10 +29,37 @@
 }
 
 .num-pad {
+  background-color: #282c34;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, calc(100vw / 3));
   grid-template-rows: repeat(4, calc(50vh / 4));
+}
+
+.dark-bg {
+  border: 1px solid pink;
+  background-color: #282c34;
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, calc(100vw / 3));
+  grid-template-rows: repeat(4, calc(50vh / 4));
+}
+
+.ghost-cell {
+  box-sizing: border-box;
+  width: calc(100vw / 3);
+  height: calc(50vh / 4);
+}
+
+.active {
+  background-color: rgba(255,255,255,0.75);
 }
 
 @keyframes App-logo-spin {
