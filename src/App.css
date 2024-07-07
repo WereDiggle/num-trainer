@@ -57,6 +57,11 @@
   box-sizing: border-box;
   width: calc(100vw / 3);
   height: calc(50vh / 4);
+  transition: background-color 1s 0s;
+}
+
+.black {
+  background-color: black;
 }
 
 .active {

@@ -18,7 +18,9 @@ function InputGhost({num}) {
   let ghostCells = Array.from(
     [1, 2, 3, 4, 5, 6, 7, 8, 9, null, 0, null],
     (n, _) => {
-      if (num == n) {
+      if (n === null) {
+        return (<div className='ghost-cell black'></div>);
+      } else if (num == n) {
         return (<div className='ghost-cell active'></div>);
       } else {
         return (<div className='ghost-cell'></div>);
