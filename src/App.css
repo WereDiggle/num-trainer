@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 50vmin);
-  color: white;
+  color: gray;
 }
 
 .App-link {
@@ -42,16 +42,25 @@
   color: white;
 }
 
+.display-container {
+  position: relative;
+}
+
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 100%;
+  transform: translate(0%, 0);
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
   justify-content: center;
+  align-content: center;
   align-items: center;
   justify-items: center;
-  grid-template-columns: repeat(3, calc(100vw / 3));
-  grid-template-rows: repeat(4, calc(50vh / 4));
+  grid-template-columns: repeat(3, calc(50vh / 8));
+  grid-template-rows: repeat(4, calc(50vh / 8));
+  border: 1px solid gray;
 }
 
 .ghost-cell {
@@ -60,13 +69,16 @@
   transition: all 4s 0s ease-out;
   width: 0px;
   height: 0px;
+  opacity: 0;
+  border-radius: 100%;
 }
 
 .active {
+  opacity: 1;
   transition: none;
-  background-color: rgba(255, 60, 116, 0.75);
-  width: calc(100vw / 3);
-  height: calc(50vh / 4);
+  background-color: white;
+  width: calc(50vh / 8);
+  height: calc(50vh / 8);
 }
 
 .black {

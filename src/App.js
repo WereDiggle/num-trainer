@@ -2,25 +2,25 @@ import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from 'react';
 
-function NumDisplay({num}) {
+function NumDisplay({num, lastInput}) {
   return (
-    <div>
+    <div className="display-container">
       <div>
         {num}
       </div>
-      <InputGhost num={num}/>
+      <InputGhost lastInput={lastInput}/>
     </div>
   );
 }
 
 // 👻
-function InputGhost({num}) {
+function InputGhost({lastInput}) {
   let ghostCells = Array.from(
     [1, 2, 3, 4, 5, 6, 7, 8, 9, null, 0, null],
     (n, _) => {
       if (n === null) {
         return (<div className='ghost-cell black'></div>);
-      } else if (num == n) {
+      } else if (lastInput == n) {
         return (<div className='ghost-cell active'></div>);
       } else {
         return (<div className='ghost-cell'></div>);
@@ -34,15 +34,11 @@ function InputGhost({num}) {
   );
 }
 
-
-function NumPadButton({bigNum, setBigNum, num}) {
-  function handleClick() {
-    if (num == bigNum) {
-      setBigNum(generateBigNum(bigNum));
-    }
-  }
+// We don't have to pass all this stuff into the numpad button.
+// Just the value, and handleClick function
+function NumPadButton({value, handleClick}) {
   return (
-    <button className='dark-bg' onClick={handleClick}>{num}</button>
+    <button className='dark-bg' onClick={handleClick}>{value}</button>
   );
 }
 
@@ -55,36 +51,53 @@ function NumPadButton({bigNum, setBigNum, num}) {
 */
 
 // 🔢
-function NumPad(props) {
+function NumPad({handleClick}) {
   
   useEffect(() => {
     const handleKeyPress = (event) => {
       console.log('key pressed ' + event.key);
-      if (event.key == props.bigNum) { // props is only captured once
-        props.setBigNum(generateBigNum(props.bigNum));
-      }
+      handleClick(event.key);
     }
-    console.log('use effect');
-    console.log(window);
     window.addEventListener("keydown", handleKeyPress);
     
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [props.bigNum]);
+  }, [handleClick]);
+
+  let numPadButtons = Array.from(
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, null, 0, null],
+    (n, _) => {
+      if (n === null) {
+        return (<div></div>);
+      } else {
+        return (<NumPadButton handleClick={() => handleClick(n)} value={n}/>);
+      }
+    }
+  );
 
   return (
     <div className='num-pad'>
-      <NumPadButton {...props} num='1'/>
-      <NumPadButton {...props} num='2'/>
-      <NumPadButton {...props} num='3'/>
-      <NumPadButton {...props} num='4'/>
-      <NumPadButton {...props} num='5'/>
-      <NumPadButton {...props} num='6'/>
-      <NumPadButton {...props} num='7'/>
-      <NumPadButton {...props} num='8'/>
-      <NumPadButton {...props} num='9'/>
-      <div></div>
-      <NumPadButton {...props} num='0'/>
-      <div></div>
+      {numPadButtons}
+    </div>
+  );
+}
+
+function App() {
+  const [bigNum, setBigNum] = useState(generateBigNum());
+  const [lastInput, setLastInput] = useState(null);
+
+  function handleClick(value) {
+    if (value == bigNum) {
+      setBigNum(generateBigNum(bigNum));
+    }
+    setLastInput(value);
+  }
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <NumDisplay num={bigNum} lastInput={lastInput}/>
+      </header>
+      <NumPad handleClick={handleClick}/>
     </div>
   );
 }
@@ -98,17 +111,5 @@ function generateBigNum(curNum) {
   return randNum;
 }
 
-function App() {
-  const [bigNum, setBigNum] = useState(generateBigNum());
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <NumDisplay num={bigNum}/>
-      </header>
-      <NumPad setBigNum={setBigNum} bigNum={bigNum}/>
-    </div>
-  );
-}
 
 export default App;
