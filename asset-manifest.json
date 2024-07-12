@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/num-trainer/static/css/main.5d25899f.css",
-    "main.js": "/num-trainer/static/js/main.6686e55f.js",
+    "main.css": "/num-trainer/static/css/main.58e30a97.css",
+    "main.js": "/num-trainer/static/js/main.6d6f8cb4.js",
     "static/js/453.a78613f6.chunk.js": "/num-trainer/static/js/453.a78613f6.chunk.js",
     "static/media/logo.svg": "/num-trainer/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/num-trainer/index.html",
-    "main.5d25899f.css.map": "/num-trainer/static/css/main.5d25899f.css.map",
-    "main.6686e55f.js.map": "/num-trainer/static/js/main.6686e55f.js.map",
+    "main.58e30a97.css.map": "/num-trainer/static/css/main.58e30a97.css.map",
+    "main.6d6f8cb4.js.map": "/num-trainer/static/js/main.6d6f8cb4.js.map",
     "453.a78613f6.chunk.js.map": "/num-trainer/static/js/453.a78613f6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d25899f.css",
-    "static/js/main.6686e55f.js"
+    "static/css/main.58e30a97.css",
+    "static/js/main.6d6f8cb4.js"
   ]
 }
